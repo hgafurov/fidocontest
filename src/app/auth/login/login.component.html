@@ -14,13 +14,17 @@
                 <mat-form-field class="reg-full-width">
                     <mat-label>Password</mat-label>
                     <input matInput formControlName="password" type="password" placeholder="Password" required>
-                    <mat-error *ngIf="checkError('password', 'required')">Login kiritilishi shart</mat-error>
-                    <mat-error *ngIf="checkError('password', 'minlength')">Login uchta belgidan kam bo'lmasligi lozim</mat-error>                   
+                    <mat-error *ngIf="checkError('password', 'required')">Parol kiritilishi shart</mat-error>
+                    <mat-error *ngIf="checkError('password', 'minlength')">Parol to'rtta belgidan kam bo'lmasligi lozim</mat-error>                   
                 </mat-form-field>
             </form>    
         </mat-card-content>
-        <mat-card-actions>
-            <button mat-raised-button [disabled]="!loginForm.valid" color="primary">Login</button>
+        <mat-card-actions class="reg-form">
+            <button mat-raised-button (click)="login()" 
+                    [disabled]="!loginForm.valid || loginForm.disabled" 
+                    color="primary">
+                Login
+            </button>
         </mat-card-actions>
     </mat-card>
 </div>

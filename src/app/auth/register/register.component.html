@@ -1,38 +1,52 @@
 <div class="reg-card">
     <mat-toolbar>
-        <span>Registration</span>
+        <span>Ro'yhatdan o'tish</span>
     </mat-toolbar>
     <mat-card class="my-card">
         <mat-card-content>
-            <form class="reg-form">
+            <form [formGroup]="registerForm" class="reg-form">
+                <mat-form-field class="reg-full-width">
+                    <mat-label>Login</mat-label>
+                    <input matInput formControlName="login" type="text" placeholder="Login" required>
+                    <mat-error *ngIf="checkError('login', 'required')">Login kiritilishi shart</mat-error>
+                    <mat-error *ngIf="checkError('login', 'minlength')">Login uchta belgidan kam bo'lmasligi lozim</mat-error>
+                </mat-form-field>
                 <mat-form-field class="reg-full-width">
                     <mat-label>Familiya</mat-label>
-                    <input  matInput type="text" placeholder="Familiya"  name="familiya"  required>
+                    <input matInput formControlName="familiya" type="text" placeholder="Familiya" required>
+                    <mat-error *ngIf="checkError('familiya', 'required')">Familiyani kiritilishi shart</mat-error>
                 </mat-form-field>
                 <mat-form-field class="reg-full-width">
                     <mat-label>Ism</mat-label>
-                    <input  matInput type="text" placeholder="Ism" name="imya"  required>
+                    <input matInput formControlName="imya" type="text" placeholder="Ism" required>
+                    <mat-error *ngIf="checkError('imya', 'required')">Ismini kiritilishi shart</mat-error>
                 </mat-form-field>
                 <mat-form-field class="reg-full-width">
-                    <mat-label>Qaysi viloyatdansiz</mat-label>
-                    <input  matInput type="text" placeholder="viloyat" name="address"  required>
-                </mat-form-field>
-                <mat-form-field class="reg-full-width">
-                    <mat-label>Email</mat-label>
-                    <input  matInput type="email" placeholder="Email" name="email" required>
-                </mat-form-field>
-                <mat-form-field class="reg-full-width">
-                    <mat-label>Password</mat-label>
-                    <input  matInput type="password" placeholder="Password"  name="password1" required>
+                    <mat-label>E-mail</mat-label>
+                    <input matInput formControlName="email" type="text" placeholder="user@misol.uz">
+                    <mat-error *ngIf="checkError('email', 'email')">E-mail hato kiritilgan</mat-error>
                 </mat-form-field>
                 <mat-form-field class="reg-full-width">
                     <mat-label>Password</mat-label>
-                    <input  matInput type="password" placeholder="Password"  name="password" required>
+                    <input matInput formControlName="password1" type="password" placeholder="Password" required>
+                    <mat-error *ngIf="checkError('password1', 'required')">Parol kiritilishi shart</mat-error>
+                    <mat-error *ngIf="checkError('password1', 'minlength')">Parol to'rtta belgidan kam bo'lmasligi lozim</mat-error>                   
+                </mat-form-field>
+                <mat-form-field class="reg-full-width">
+                    <mat-label>Password</mat-label>
+                    <input matInput formControlName="password2" type="password" placeholder="Passwordni yana bir bor kiriting" required>
+                    <mat-error *ngIf="checkError('password2', 'required')">Parol kiritilishi shart</mat-error>
+                    <mat-error *ngIf="checkError('password2', 'minlength')">Parol to'rtta belgidan kam bo'lmasligi lozim</mat-error>
+                    <mat-error *ngIf="!registerForm.errors?.identityPasswordError">Parollar mos kelmadi</mat-error>                   
                 </mat-form-field>
             </form>    
         </mat-card-content>
-        <mat-card-actions>
-            <button mat-raised-button color="primary">REGISTER</button>
+        <mat-card-actions class="reg-form">
+            <button mat-raised-button (click)="register()" 
+                    [disabled]="!registerForm.valid || registerForm.disabled" 
+                    color="primary">
+                Login
+            </button>
         </mat-card-actions>
     </mat-card>
 </div>
