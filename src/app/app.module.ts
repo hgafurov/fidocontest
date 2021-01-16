@@ -9,11 +9,14 @@ import { RegisterComponent } from './auth/register/register.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppMaterialModule } from './app-material.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './interceptors/token.interceptor';
+import { AuthHelloComponent } from './auth/auth-hello/auth-hello.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    AuthHelloComponent,
     LoginComponent,
     RegisterComponent,
     AuthLayoutComponent
@@ -27,7 +30,13 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     AppMaterialModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      multi: true,
+      useClass: TokenInterceptor
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

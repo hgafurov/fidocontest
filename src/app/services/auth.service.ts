@@ -19,7 +19,7 @@ export class AuthService {
     login(lp: ILogin):Observable<{token: string}> {
         return this.http.post<{token: string}>("/api/v1/auth/login", lp)
             .pipe(tap(({token}) => {
-                localStorage.setItem('auth-token', token);
+                localStorage.setItem('fido-token', token);
                 this.setToken(token);
             }));
     }
