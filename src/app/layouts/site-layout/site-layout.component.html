@@ -1,1 +1,9 @@
-<p>site-layout works!</p>
+<mat-toolbar>
+    <mat-toolbar-row>
+       <span><a href="/">Fido Biznes</a></span>
+       <span class="spacer"></span>
+       <a mat-button (click)="logout()">Logout</a>
+    </mat-toolbar-row>
+</mat-toolbar>
+  
+<router-outlet></router-outlet>

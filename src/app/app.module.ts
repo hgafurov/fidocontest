@@ -12,6 +12,8 @@ import { AppMaterialModule } from './app-material.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { AuthHelloComponent } from './auth/auth-hello/auth-hello.component';
+import { SiteLayoutComponent } from './layouts/site-layout/site-layout.component';
+import { HelloComponent } from './site/hello/hello.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { AuthHelloComponent } from './auth/auth-hello/auth-hello.component';
     AuthHelloComponent,
     LoginComponent,
     RegisterComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    SiteLayoutComponent,
+    HelloComponent
   ],
   imports: [
     BrowserModule,

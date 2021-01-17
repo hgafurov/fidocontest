@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    const sttoken = localStorage.getItem('fodp-token');
+    const sttoken = localStorage.getItem('fido-token');
     if (sttoken !== null) {
       this.authService.setToken(sttoken);
     }
