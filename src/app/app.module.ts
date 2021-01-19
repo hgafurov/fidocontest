@@ -14,6 +14,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
 import { AuthHelloComponent } from './auth/auth-hello/auth-hello.component';
 import { SiteLayoutComponent } from './layouts/site-layout/site-layout.component';
 import { HelloComponent } from './site/hello/hello.component';
+import { LogoaddComponent } from './site/logoadd/logoadd.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,9 @@ import { HelloComponent } from './site/hello/hello.component';
     RegisterComponent,
     AuthLayoutComponent,
     SiteLayoutComponent,
-    HelloComponent
+    HelloComponent,
+    LoginComponent,
+    LogoaddComponent
   ],
   imports: [
     BrowserModule,

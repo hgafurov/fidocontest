@@ -8,6 +8,7 @@ import { LoginGuard } from './guards/login.guard';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { SiteLayoutComponent } from './layouts/site-layout/site-layout.component';
 import { HelloComponent } from './site/hello/hello.component';
+import { LogoaddComponent } from './site/logoadd/logoadd.component';
 
 const routes: Routes = [
   {
@@ -20,7 +21,8 @@ const routes: Routes = [
   },
   {
     path: '', component: SiteLayoutComponent, canActivate: [AuthGuard], children: [
-      {path: 'hello', component: HelloComponent}
+      {path: 'hello', component: HelloComponent},
+      {path: 'logoadd', component: LogoaddComponent}
     ]
   }
 
