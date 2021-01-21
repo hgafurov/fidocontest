@@ -1,0 +1,15 @@
+.reg-card {
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 470px;
+}
+.reg-form {
+    margin-left: 20px;
+    min-width: 150px;
+    max-width: 400px;
+    width: 100%;
+}
+.reg-full-width {
+    width: 100%;
+}

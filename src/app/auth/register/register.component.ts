@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { IUser } from 'src/app/interfaces/i.user';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -33,11 +32,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
       login: new FormControl(null, [Validators.required, Validators.minLength(3)]),
       familiya: new FormControl(null, [Validators.required]),
       imya: new FormControl(null, [Validators.required]),
-      email: new FormControl(null, [Validators.email]),
-      password1: new FormControl(null, [Validators.required, Validators.minLength(4)]),
-      password2: new FormControl(null, [Validators.required, Validators.minLength(4)])     
+      email: new FormControl(null, [Validators.email])    
     },
     { validators: identityPasswordError });
+
   }
 
   public checkError(controlName: string, errorName: string): boolean {
@@ -57,9 +55,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
       error => {
         console.warn(error);
         this.registerForm.enable();
-      }
-      
-    )
+      }      
+    );
   }
 }
 
@@ -76,4 +73,4 @@ export const identityPasswordError: ValidatorFn = (control: AbstractControl): Va
   } else {
     pass2.setErrors(null);
   }
-};
+}

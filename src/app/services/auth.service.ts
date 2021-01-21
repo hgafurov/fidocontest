@@ -28,6 +28,17 @@ export class AuthService {
        return this.http.post<IUser>("/api/v1/auth/create-user", user);
     }
 
+    getCurrentUser(): Observable<IUser> {
+      if (this.token) {
+        return this.http.post<IUser>("/api/v1/auth/guser", {token: this.token});
+      } 
+      return null;
+    } 
+
+    updateUser(user: IUser) {
+        return this.http.post<IUser>("/api/v1/auth/update-user", user)
+    }
+
     setToken(token: string) {
         this.token = token;
     }

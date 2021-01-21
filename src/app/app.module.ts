@@ -15,6 +15,8 @@ import { AuthHelloComponent } from './auth/auth-hello/auth-hello.component';
 import { SiteLayoutComponent } from './layouts/site-layout/site-layout.component';
 import { HelloComponent } from './site/hello/hello.component';
 import { LogoaddComponent } from './site/logoadd/logoadd.component';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
+import { UserEditComponent } from './site/user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { LogoaddComponent } from './site/logoadd/logoadd.component';
     SiteLayoutComponent,
     HelloComponent,
     LoginComponent,
-    LogoaddComponent
+    LogoaddComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import { LogoaddComponent } from './site/logoadd/logoadd.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AppMaterialModule
+    AppMaterialModule,
+    MaterialFileInputModule
   ],
   providers: [
     {

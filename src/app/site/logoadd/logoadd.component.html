@@ -22,7 +22,7 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <mat-form-field class="ed-full-width">
+                            <mat-form-field  appearance="outline" class="ed-full-width">
                                 <mat-label>Logotip nomi</mat-label>
                                 <input matInput type="text" placeholder="Logotip nomi" required>
                             </mat-form-field>                                   
@@ -30,7 +30,7 @@
                     </tr>
                     <tr>
                         <td colspan="2">                              
-                            <mat-form-field class="ed-full-width">
+                            <mat-form-field  appearance="outline" class="ed-full-width">
                                 <mat-label>Muallif</mat-label>
                                 <input matInput type="text" placeholder="Familiya va ism" required>
                             </mat-form-field> 
@@ -38,22 +38,9 @@
                     </tr>
                     <tr>
                         <td colspan="2">                              
-                            <mat-form-field class="f-mat-form-field">
-                                <div>
-                                    <mat-toolbar class="f-mat-toolbar-single-row">
-                                      <!-- Display files names -->
-                                      <input matInput [(ngModel)]="fileAttr" readonly name="name" />
-                                
-                                      <!-- Browse Button -->
-                                      <button mat-flat-button color="primary">
-                                        Browse File
-                                      </button>
-                                    </mat-toolbar>
-                                
-                                    <!-- Fetch selected filed on change -->
-                                    <input type="file" #fileInput id="uploadFile" (change)="uploadFileEvt($event)" name="uploadFile" multiple="multiple"
-                                      accept="image/*" />
-                                </div>
+                            <mat-form-field appearance="outline" class="ed-full-width">
+                                <ngx-mat-file-input placeholder="Basic Input" ></ngx-mat-file-input>
+                                <mat-icon matSuffix style="cursor: pointer">folder</mat-icon>  
                             </mat-form-field> 
                         </td>
                     </tr>

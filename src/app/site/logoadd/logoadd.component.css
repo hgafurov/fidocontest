@@ -8,31 +8,3 @@
 .ed-full-width {
     width: 100%;
 }
-
-
-.f-mat-form-field {
-    margin: 40px 0;
-    width: 400px !important;
-}
-
-.f-mat-toolbar-single-row {
-    font-style: normal;
-    font-size: small;
-    height: auto !important;
-    background: transparent;
-}
-
-.f-mat-toolbar-single-row button {
-    width: 200px;
-}
-
-#uploadFile {
-    top: 0px;
-    left: 0px;
-    width: 100%;    
-    z-index: 9;
-    opacity: 0;
-    height: 100%;
-    cursor: pointer;
-    position: absolute;
-}

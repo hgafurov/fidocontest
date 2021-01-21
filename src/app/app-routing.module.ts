@@ -9,6 +9,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { SiteLayoutComponent } from './layouts/site-layout/site-layout.component';
 import { HelloComponent } from './site/hello/hello.component';
 import { LogoaddComponent } from './site/logoadd/logoadd.component';
+import { UserEditComponent } from './site/user-edit/user-edit.component';
 
 const routes: Routes = [
   {
@@ -16,13 +17,14 @@ const routes: Routes = [
       {path: '', redirectTo: '/auth-hello', pathMatch: 'full'},
       {path: 'auth-hello', component: AuthHelloComponent},
       {path: 'login', component: LoginComponent, canActivate: [LoginGuard]},
-      {path: 'register', component: RegisterComponent}
+      {path: 'register', component: RegisterComponent, canActivate: [LoginGuard]}
     ]
   },
   {
     path: '', component: SiteLayoutComponent, canActivate: [AuthGuard], children: [
       {path: 'hello', component: HelloComponent},
-      {path: 'logoadd', component: LogoaddComponent}
+      {path: 'logoadd', component: LogoaddComponent},
+      {path: 'user-edit', component: UserEditComponent}
     ]
   }
 
