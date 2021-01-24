@@ -1,6 +1,6 @@
 <div class="reg-card">
     <mat-toolbar>
-        <span>Ro'yhatdan o'tish</span>
+        <span>Профиль пользователя</span>
     </mat-toolbar>
     <mat-card class="my-card">
         <mat-card-content>
@@ -32,7 +32,11 @@
             <button mat-raised-button (click)="saveUser()" 
                     [disabled]="!userForm.valid || userForm.disabled" 
                     color="primary">
-                Save
+                Сохранить
+            </button>
+            <button mat-raised-button (click)="cancel()" 
+                    color="primary">
+                Отменить
             </button>
         </mat-card-actions>
     </mat-card>

@@ -13,10 +13,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { AuthHelloComponent } from './auth/auth-hello/auth-hello.component';
 import { SiteLayoutComponent } from './layouts/site-layout/site-layout.component';
-import { HelloComponent } from './site/hello/hello.component';
 import { LogoaddComponent } from './site/logoadd/logoadd.component';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { UserEditComponent } from './site/user-edit/user-edit.component';
+import { DocListComponent } from './site/doc-list/doc-list.component';
+import { DocEditComponent } from './site/doc-edit/doc-edit.component';
 
 @NgModule({
   declarations: [
@@ -26,10 +27,11 @@ import { UserEditComponent } from './site/user-edit/user-edit.component';
     RegisterComponent,
     AuthLayoutComponent,
     SiteLayoutComponent,
-    HelloComponent,
     LoginComponent,
     LogoaddComponent,
-    UserEditComponent
+    UserEditComponent,
+    DocListComponent,
+    DocEditComponent
   ],
   imports: [
     BrowserModule,

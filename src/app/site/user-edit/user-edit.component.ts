@@ -69,4 +69,8 @@ export class UserEditComponent implements OnInit, OnDestroy {
       }      
     );
   }
+
+  cancel() {
+    this.router.navigate(['/doc-list'])
+  }
 }

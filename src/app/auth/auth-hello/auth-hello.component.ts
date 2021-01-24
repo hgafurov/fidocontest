@@ -17,8 +17,8 @@ export class AuthHelloComponent implements OnInit {
 
   run() {
     if (this.authService.isAuthenticated()) {
-      console.log('hello');
-      this.router.navigate(['/hello']);
+      console.log('doc-list');
+      this.router.navigate(['/doc-list']);
     } else {
       console.log('login');
       this.router.navigate(['/login']);
