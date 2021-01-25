@@ -27,9 +27,9 @@ export class DocEditComponent implements OnInit{
       tema: new FormControl(null, [Validators.required, Validators.maxLength(100)]),
       description: new FormControl(null, [Validators.maxLength(1000)]),
       srokIspol: new FormControl(null),
-      access: new FormControl(null, Validators.required),
-      control: new FormControl(null, Validators.required),
-      docUrl: new FormControl(null, Validators.required)
+      access: new FormControl(null),
+      control: new FormControl(null),
+      docUrl: new FormControl(null)
     },
     { validators: verificationSrokIspol });
 
