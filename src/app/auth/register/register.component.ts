@@ -32,7 +32,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
       login: new FormControl(null, [Validators.required, Validators.minLength(3)]),
       familiya: new FormControl(null, [Validators.required]),
       imya: new FormControl(null, [Validators.required]),
-      email: new FormControl(null, [Validators.email])    
+      email: new FormControl(null, [Validators.email]),
+      password1: new FormControl(null, [Validators.required, Validators.maxLength(4)]),
+      password2: new FormControl(null, [Validators.required, Validators.maxLength(4)])    
     },
     { validators: identityPasswordError });
 
@@ -64,7 +66,7 @@ export const identityPasswordError: ValidatorFn = (control: AbstractControl): Va
   const pass1 = control.get('password1');
   const pass2 = control.get('password2');
 
-  if (pass1.errors && !pass2.errors.identityPassword) {
+  if (pass1.errors && !pass2.errors.identityPasswordError) {
     return;
   }
 

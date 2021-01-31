@@ -30,5 +30,8 @@
                 Registration
             </button>
         </mat-card-actions>
+        <mat-card-actions>
+            <mat-error *ngIf="authErr">Login yoki parol xato kiritilgan</mat-error>
+        </mat-card-actions>
     </mat-card>
 </div>

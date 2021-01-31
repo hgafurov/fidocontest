@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   loginForm: FormGroup;
   lSub: Subscription; // bu http stream uchun
+  authErr: boolean = false;
 
   constructor(private authService: AuthService,
               private router: Router,
@@ -48,9 +49,13 @@ export class LoginComponent implements OnInit, OnDestroy {
   login() {
     this.loginForm.disable();
     this.lSub = this.authService.login(this.loginForm.value).subscribe(
-      () => this.router.navigate(['/doc-list']),
+      () => {
+        this.authErr=false;
+        this.router.navigate(['/doc-list']);
+      },
       error => {
         console.warn(error);
+        this.authErr=true;
         this.loginForm.enable();
       }
     )      

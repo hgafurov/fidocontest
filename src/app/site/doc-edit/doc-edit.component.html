@@ -81,7 +81,7 @@
                     <mat-form-field>
                         <mat-label>Срок исполнения.</mat-label>
                         <input matInput formControlName="srokIspol" type="date" required>
-                        <mat-error *ngIf="!docForm.errors?.verificationSrokIspol">текст болше 1000 знаков</mat-error>
+                        <mat-error *ngIf="!docForm.errors?.verificationSrokIspol">срок исполнения не может быть раньше даты регистрации документа</mat-error>
                     </mat-form-field>
                 </td>
                 <td>
@@ -90,19 +90,26 @@
                 </td>           
             </tr>            
             <tr>
-                <td colspan="2">                              
+                <td>                              
                     <mat-form-field class="ed-full-width">
-                        <ngx-mat-file-input placeholder="Basic Input" ></ngx-mat-file-input>
-                        <mat-icon matSuffix style="cursor: pointer">folder</mat-icon>  
+                        <ngx-mat-file-input formControlName="file" placeholder="Basic Input" [accept]="['.pdf','.doc','.docx']"></ngx-mat-file-input>
+                        <mat-icon matSuffix style="cursor: pointer">folder</mat-icon> 
+                        <mat-error *ngIf="checkError('file', 'maxContentSize')">Размер файла превышает 1 Мб</mat-error>
                     </mat-form-field> 
                 </td>
+                <td>                              
+                    <mat-form-field class="ed-full-width">
+                        <mat-label>Url:</mat-label>
+                        <input matInput formControlName="docUrl" type="text" placeholder="Url" readonly>
+                    </mat-form-field> 
+                </td>               
             </tr>
         </table>
             
     </form>    
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-    <button mat-button [mat-dialog-close]="true" cdkFocusInitial
+    <button mat-button  cdkFocusInitial
             [disabled]="!docForm.valid || docForm.disabled">
         Сохранить
     </button>

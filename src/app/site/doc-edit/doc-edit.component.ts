@@ -1,24 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
+import { FileValidator } from 'ngx-material-file-input';
+import { Observable, Subscription } from 'rxjs';
+import { DocService } from 'src/app/services/doc.service';
 
 @Component({
   selector: 'app-doc-edit',
   templateUrl: './doc-edit.component.html',
   styleUrls: ['./doc-edit.component.css']
 })
-export class DocEditComponent implements OnInit{
+export class DocEditComponent implements OnInit, OnDestroy{
   
   docForm: FormGroup;
+  dSub: Subscription;
+  
+  constructor(public dialogRef: MatDialogRef<DocEditComponent>,
+              private activatedRoute: ActivatedRoute,
+              private docService: DocService,
+              @Inject(MAT_DIALOG_DATA) 
+              public data: any) {
 
-  constructor(
-    public dialogRef: MatDialogRef<DocEditComponent>) {}
+  }
+  
+  
+  ngOnDestroy(): void {
+    if (this.dSub) {
+      this.dSub.unsubscribe();
+    }
+  }
  
     
   ngOnInit(): void {
+
     this.docForm = new FormGroup({
-      regNo: new FormControl('34hhd', [Validators.required, regNoValidator]),
+      regNo: new FormControl(null, [Validators.required, regNoValidator]),
       regDate: new FormControl((new Date()).toISOString().slice(0, 10), [Validators.required]),
       outDocNo: new FormControl(null, [Validators.required, regNoValidator]),
       outDocDate: new FormControl(null),
@@ -29,10 +46,27 @@ export class DocEditComponent implements OnInit{
       srokIspol: new FormControl(null),
       access: new FormControl(null),
       control: new FormControl(null),
+      file: new FormControl(null,[FileValidator.maxContentSize(1048576)]),
       docUrl: new FormControl(null)
     },
     { validators: verificationSrokIspol });
-
+    
+    this.dSub = this.docService.getDocById(this.data.docId).subscribe(
+      doc => {
+        this.docForm.controls['regNo'].setValue(doc.regNo);
+        this.docForm.controls['regDate'].setValue(doc.regDate);
+        this.docForm.controls['outDocNo'].setValue(doc.outDocNo);
+        this.docForm.controls['outDocDate'].setValue(doc.outDocDate);
+        this.docForm.controls['formaDostav'].setValue(doc.formaDostav);
+        this.docForm.controls['correspondent'].setValue(doc.correspondent);
+        this.docForm.controls['tema'].setValue(doc.tema);
+        this.docForm.controls['description'].setValue(doc.description);
+        this.docForm.controls['srokIspol'].setValue(doc.srokIspol);
+        this.docForm.controls['access'].setValue(doc.access);
+        this.docForm.controls['control'].setValue(doc.control);
+        this.docForm.controls['docUrl'].setValue(doc.docUrl);   
+      }
+    );
   }
 
   closeDialog(str: string) {

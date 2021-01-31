@@ -13,7 +13,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { AuthHelloComponent } from './auth/auth-hello/auth-hello.component';
 import { SiteLayoutComponent } from './layouts/site-layout/site-layout.component';
-import { LogoaddComponent } from './site/logoadd/logoadd.component';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { UserEditComponent } from './site/user-edit/user-edit.component';
 import { DocListComponent } from './site/doc-list/doc-list.component';
@@ -28,7 +27,6 @@ import { DocEditComponent } from './site/doc-edit/doc-edit.component';
     AuthLayoutComponent,
     SiteLayoutComponent,
     LoginComponent,
-    LogoaddComponent,
     UserEditComponent,
     DocListComponent,
     DocEditComponent
