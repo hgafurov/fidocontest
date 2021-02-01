@@ -49,13 +49,13 @@ export class DocListComponent implements OnInit {
   }
 
   openDialog(id: number): void {
-    console.log("DOC-ID = " + id)
     const dialogRef = this.dialog.open(DocEditComponent, {data: {
       docId: id
     }});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
+      this.getDocs();
     });
   }
 

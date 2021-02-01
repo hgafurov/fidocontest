@@ -1,6 +1,5 @@
 <div class="mat-elevation-z8">
-    <button mat-raised-button> Добавить документ </button>
-    <button mat-button (click)="openDialog(null)">Open dialog</button>
+    <button mat-raised-button (click)="openDialog(0)"> Добавить документ </button>
     <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
   
       <ng-container matColumnDef="id">
@@ -57,7 +56,9 @@
                 <mat-checkbox [(ngModel)]="element.access" [disabled]="true"> Доступ </mat-checkbox> &nbsp;
                 <mat-checkbox [(ngModel)]="element.control" [disabled]="true"> Контроль </mat-checkbox>
               </p>              
-              <p>Файл:<a href="{{element.docUrl}}">{{element.docUrl}}</a></p> 
+              <p>Файл:<a href="{{element.docUrl}}">{{element.docUrl}}</a>
+              Редактировал: {{element.user.imya}} {{element.user.familiya}}
+              </p> 
             </div>
             <div align="end">
               <button mat-mini-fab (click)="openDialog(element.id)" color="primary"> <mat-icon>edit</mat-icon> </button>

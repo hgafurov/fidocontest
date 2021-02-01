@@ -92,7 +92,7 @@
             <tr>
                 <td>                              
                     <mat-form-field class="ed-full-width">
-                        <ngx-mat-file-input formControlName="file" placeholder="Basic Input" [accept]="['.pdf','.doc','.docx']"></ngx-mat-file-input>
+                        <ngx-mat-file-input formControlName="file" placeholder="Выбор файла" [accept]="['.pdf','.doc','.docx']"></ngx-mat-file-input>
                         <mat-icon matSuffix style="cursor: pointer">folder</mat-icon> 
                         <mat-error *ngIf="checkError('file', 'maxContentSize')">Размер файла превышает 1 Мб</mat-error>
                     </mat-form-field> 
@@ -109,7 +109,7 @@
     </form>    
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-    <button mat-button  cdkFocusInitial
+    <button mat-button  (click)="saveDoc()" cdkFocusInitial
             [disabled]="!docForm.valid || docForm.disabled">
         Сохранить
     </button>

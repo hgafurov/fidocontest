@@ -19,4 +19,12 @@ export class DocService {
     getDocById(id: number): Observable<IDoc> {
         return this.http.get<IDoc>('/api/v1/doc/get/' + id);
     }
+
+    saveDoc(doc: IDoc): Observable<IDoc> {
+        return this.http.post<IDoc>('/api/v1/doc/save-doc', doc);
+    }
+
+    updateDoc(doc: IDoc): Observable<IDoc> {
+        return this.http.post<IDoc>('/api/v1/doc/update', doc);
+    }
 }
