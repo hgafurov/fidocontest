@@ -5,6 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { IDoc } from 'src/app/interfaces/i.doc';
 import { DocService } from 'src/app/services/doc.service';
+import { DocDelDialogComponent } from '../doc-del-dialog/doc-del-dialog.component';
 import { DocEditComponent } from '../doc-edit/doc-edit.component';
 
 @Component({
@@ -58,5 +59,24 @@ export class DocListComponent implements OnInit {
       this.getDocs();
     });
   }
+  
+  openDelDialog(id: number): void {
+    const dialogRef = this.dialog.open(DocDelDialogComponent);
 
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        console.log(result);
+        this.deleteDoc(id);
+        this.getDocs();
+      }
+    });
+  }
+
+  deleteDoc(id: number): void {
+    this.docService.deleteDoc(id).subscribe(
+      res => {
+        console.log(res);
+      }
+    );
+  }
 }

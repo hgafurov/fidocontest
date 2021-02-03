@@ -17,6 +17,7 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { UserEditComponent } from './site/user-edit/user-edit.component';
 import { DocListComponent } from './site/doc-list/doc-list.component';
 import { DocEditComponent } from './site/doc-edit/doc-edit.component';
+import { DocDelDialogComponent } from './site/doc-del-dialog/doc-del-dialog.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { DocEditComponent } from './site/doc-edit/doc-edit.component';
     LoginComponent,
     UserEditComponent,
     DocListComponent,
-    DocEditComponent
+    DocEditComponent,
+    DocDelDialogComponent
   ],
   imports: [
     BrowserModule,

@@ -10,8 +10,9 @@ import { IUser } from "../interfaces/i.user";
 })
 export class AuthService {
     
+    restUrl: string = "http://localhost:8080";
+
     private token: string = null;
-    
     constructor(private http: HttpClient) {
 
     }

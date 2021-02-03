@@ -1,10 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FileInput, FileValidator } from 'ngx-material-file-input';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { IDoc } from 'src/app/interfaces/i.doc';
 import { IUpload } from 'src/app/interfaces/i.upload';
 import { Doc } from 'src/app/models/doc';
@@ -54,7 +53,7 @@ export class DocEditComponent implements OnInit, OnDestroy{
       correspondent: new FormControl(null, [Validators.required]),
       tema: new FormControl(null, [Validators.required, Validators.maxLength(100)]),
       description: new FormControl(null, [Validators.maxLength(1000)]),
-      srokIspol: new FormControl(null, [Validators.required]),
+      srokIspol: new FormControl(new Date().toISOString().slice(0, 10), [Validators.required]),
       access: new FormControl(null),
       control: new FormControl(null),
       file: new FormControl(null,[FileValidator.maxContentSize(1048576)]),
