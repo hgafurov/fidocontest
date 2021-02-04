@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { environment } from "src/environments/environment";
 import { IDoc } from "../interfaces/i.doc";
 
 @Injectable({
@@ -8,41 +9,39 @@ import { IDoc } from "../interfaces/i.doc";
 })
 export class DocService {
 
-    restUrl: string = "http://localhost:8080";
-
     constructor(private http: HttpClient) {
 
     }
 
     getDocs(): Observable<IDoc[]> {
-        return this.http.get<IDoc[]>("/api/v1/doc/get-all");
+        return this.http.get<IDoc[]>(environment.apiUrl + "/api/v1/doc/get-all");
     }
 
     getDocById(id: number): Observable<IDoc> {
-        return this.http.get<IDoc>('/api/v1/doc/get/' + id);
+        return this.http.get<IDoc>(environment.apiUrl + '/api/v1/doc/get/' + id);
     }
 
     saveDoc(doc: IDoc): Observable<IDoc> {
-        return this.http.post<IDoc>('/api/v1/doc/save-doc', doc);
+        return this.http.post<IDoc>(environment.apiUrl + '/api/v1/doc/save-doc', doc);
     }
 
     updateDoc(doc: IDoc): Observable<IDoc> {
-        return this.http.post<IDoc>('/api/v1/doc/update', doc);
+        return this.http.post<IDoc>(environment.apiUrl + '/api/v1/doc/update', doc);
     }
 
     deleteDoc(id: number): Observable<any> {
-        return this.http.get('/api/v1/doc/delete/' + id);
+        return this.http.get(environment.apiUrl + '/api/v1/doc/delete/' + id);
     }
     
     task2(): Observable<IDoc[]> {
-        return this.http.get<IDoc[]>("/api/v1/doc/task2");
+        return this.http.get<IDoc[]>(environment.apiUrl + "/api/v1/doc/task2");
     }
 
     task3(): Observable<IDoc[]> {
-        return this.http.get<IDoc[]>("/api/v1/doc/task3");
+        return this.http.get<IDoc[]>(environment.apiUrl + "/api/v1/doc/task3");
     }
 
     task4(): Observable<IDoc[]> {
-        return this.http.get<IDoc[]>("/api/v1/doc/task4");
+        return this.http.get<IDoc[]>(environment.apiUrl + "/api/v1/doc/task4");
     }
 }

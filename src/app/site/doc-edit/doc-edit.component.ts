@@ -10,6 +10,7 @@ import { IUpload } from 'src/app/interfaces/i.upload';
 import { Doc } from 'src/app/models/doc';
 import { AuthService } from 'src/app/services/auth.service';
 import { DocService } from 'src/app/services/doc.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-doc-edit',
@@ -102,7 +103,7 @@ export class DocEditComponent implements OnInit, OnDestroy{
       const file = fileForm.files[0];
       const uploadForm = new FormData();
       uploadForm.append('file',file);
-      this.dSub2 = this.http.post<IUpload>('/api/v1/upload',uploadForm).subscribe(
+      this.dSub2 = this.http.post<IUpload>(environment.apiUrl + '/api/v1/upload',uploadForm).subscribe(
         res => {
           this.docForm.get('docUrl').setValue(res.url);
           this.docFromFormDoc();

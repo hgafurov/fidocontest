@@ -33,8 +33,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
       familiya: new FormControl(null, [Validators.required]),
       imya: new FormControl(null, [Validators.required]),
       email: new FormControl(null, [Validators.email]),
-      password1: new FormControl(null, [Validators.required, Validators.maxLength(4)]),
-      password2: new FormControl(null, [Validators.required, Validators.maxLength(4)])    
+      password1: new FormControl(null, [Validators.required, Validators.minLength(4)]),
+      password2: new FormControl(null, [Validators.required, Validators.minLength(4)])    
     },
     { validators: identityPasswordError });
 

@@ -67,7 +67,8 @@
                 <mat-checkbox [(ngModel)]="element.access" [disabled]="true"> Доступ </mat-checkbox> &nbsp;
                 <mat-checkbox [(ngModel)]="element.control" [disabled]="true"> Контроль </mat-checkbox>
               </p>              
-              <p>Файл:<a href="{{element.docUrl}}">{{element.docUrl}}</a>
+              <!-- <p>Файл:<a href="{{element.docUrl}}">{{element.docUrl}}</a> -->
+              <p><a mat-button href="http://localhost:8080{{element.docUrl}}">File: {{element.docUrl}}</a>
               Редактировал: {{element.user.imya}} {{element.user.familiya}}
               </p> 
             </div>
