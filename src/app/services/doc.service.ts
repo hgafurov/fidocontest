@@ -33,4 +33,16 @@ export class DocService {
     deleteDoc(id: number): Observable<any> {
         return this.http.get('/api/v1/doc/delete/' + id);
     }
+    
+    task2(): Observable<IDoc[]> {
+        return this.http.get<IDoc[]>("/api/v1/doc/task2");
+    }
+
+    task3(): Observable<IDoc[]> {
+        return this.http.get<IDoc[]>("/api/v1/doc/task3");
+    }
+
+    task4(): Observable<IDoc[]> {
+        return this.http.get<IDoc[]>("/api/v1/doc/task4");
+    }
 }

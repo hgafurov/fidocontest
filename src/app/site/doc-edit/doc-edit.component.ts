@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { FileInput, FileValidator } from 'ngx-material-file-input';
 import { Subscription } from 'rxjs';
 import { IDoc } from 'src/app/interfaces/i.doc';
@@ -22,8 +23,11 @@ export class DocEditComponent implements OnInit, OnDestroy{
   dSub2: Subscription;
   doc: IDoc;
 
+  saveButtonDisabled: boolean;
+
   constructor(public dialogRef: MatDialogRef<DocEditComponent>,
               private http: HttpClient,
+              private snackBar: MatSnackBar,
               private authService: AuthService,
               private docService: DocService,
               @Inject(MAT_DIALOG_DATA) 
@@ -44,6 +48,8 @@ export class DocEditComponent implements OnInit, OnDestroy{
     
   ngOnInit(): void {
 
+    this.saveButtonDisabled = false;
+
     this.docForm = new FormGroup({
       regNo: new FormControl(null, [Validators.required, regNoValidator]),
       regDate: new FormControl((new Date()).toISOString().slice(0, 10), [Validators.required]),
@@ -60,6 +66,7 @@ export class DocEditComponent implements OnInit, OnDestroy{
       docUrl: new FormControl(null)
     },
     { validators: verificationSrokIspol });
+
     
     if (this.data.docId != 0 ) {
       this.dSub = this.docService.getDocById(this.data.docId).subscribe(
@@ -77,6 +84,8 @@ export class DocEditComponent implements OnInit, OnDestroy{
         }
       );
     }
+
+    this.onChanges()
   }
 
   closeDialog(str: string) {
@@ -100,6 +109,9 @@ export class DocEditComponent implements OnInit, OnDestroy{
           this.saveDocIn();
         }
       )
+    } else {
+      this.docFromFormDoc();
+      this.saveDocIn();
     }
   }
 
@@ -110,6 +122,8 @@ export class DocEditComponent implements OnInit, OnDestroy{
         doc => {
           this.doc = doc;
           this.docToFormDoc(doc);
+          this.openSnackBar("Новый" + this.doc.tema,"Cохранен");
+          this.saveButtonDisabled = true;
         }
       )
     } else {
@@ -117,6 +131,8 @@ export class DocEditComponent implements OnInit, OnDestroy{
         doc => {
           this.doc = doc;
           this.docToFormDoc(doc);
+          this.openSnackBar(this.doc.tema,"Cохранен");
+          this.saveButtonDisabled = true;
         }
       )
     }
@@ -150,6 +166,18 @@ export class DocEditComponent implements OnInit, OnDestroy{
     this.doc.access = this.docForm.controls['access'].value;
     this.doc.control = this.docForm.controls['control'].value;
     this.doc.docUrl = this.docForm.controls['docUrl'].value; 
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 3000,
+    });
+  }
+  
+  onChanges(): void {
+    this.docForm.valueChanges.subscribe(val => {
+      this.saveButtonDisabled = false;
+    });
   }
 }
 

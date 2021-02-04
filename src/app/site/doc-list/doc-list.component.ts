@@ -79,4 +79,34 @@ export class DocListComponent implements OnInit {
       }
     );
   }
+
+  task2(): void {
+    this.docService.task2().subscribe(
+      docs => {
+        console.log(docs);
+        this.dataSource = new MatTableDataSource(docs);
+        this.dataSource.paginator = this.paginator;
+      }
+    );
+  }
+
+  task3(): void {
+    this.docService.task3().subscribe(
+      docs => {
+        console.log(docs);
+        this.dataSource = new MatTableDataSource(docs);
+        this.dataSource.paginator = this.paginator;
+      }
+    );
+  }
+
+  task4(): void {
+    this.docService.task4().subscribe(
+      docs => {
+        console.log(docs);
+        this.dataSource = new MatTableDataSource(docs);
+        this.dataSource.paginator = this.paginator;
+      }
+    );
+  }
 }

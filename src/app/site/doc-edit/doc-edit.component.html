@@ -109,8 +109,9 @@
     </form>    
 </mat-dialog-content>
 <mat-dialog-actions align="end">
+
     <button mat-button  (click)="saveDoc()" cdkFocusInitial
-            [disabled]="!docForm.valid || docForm.disabled">
+            [disabled]="!docForm.valid || docForm.disabled || saveButtonDisabled">
         Сохранить
     </button>
   <button mat-button mat-dialog-close>Закрыть</button>

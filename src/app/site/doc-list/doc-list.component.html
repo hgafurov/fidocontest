@@ -1,5 +1,15 @@
 <div class="mat-elevation-z8">
     <button mat-raised-button (click)="openDialog(0)"> Добавить документ </button>
+    <button mat-raised-button (click)="task2()"
+            matTooltip="Предоставить список документов, поступивших от ЦБ по электронной почте за текущий месяц."> 
+      Тестовое задание 2.2 </button>
+    <button mat-raised-button (click)="task3()"
+            matTooltip="Предоставить список документов за 1 квартал текущего года, кроме поступивших из ГНИ с доставкой курьером"> 
+      Тестовое задание 2.3 </button>
+    <button mat-raised-button (click)="task4()"
+            matTooltip="Предоставить список документов за предыдущий месяц, поступивших от ТСЖ, исключая документы о предоставления кредита"> 
+      Тестовое задание 2.4 </button>
+
     <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
   
       <ng-container matColumnDef="id">
